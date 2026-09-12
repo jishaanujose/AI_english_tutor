@@ -355,30 +355,55 @@ if st.session_state.call_active:
     #             st.session_state.teacher_audio,
     #             format="audio/wav"
     #         )
+    # if st.session_state.teacher_audio and not st.session_state.get("audio_played", False):
+    #     audio_b64 = base64.b64encode(st.session_state.teacher_audio).decode()
+    #     unique_id = uuid.uuid4().hex
+
+    #     autoplay_html = f"""
+    #         <html>
+    #             <body>
+    #                 <audio id="aud_{unique_id}" autoplay>
+    #                     <source src="data:audio/wav;base64,{audio_b64}" type="audio/wav">
+    #                 </audio>
+    #                 <script>
+    #                     var audio = document.getElementById("aud_{unique_id}");
+    #                     if (audio) {{
+    #                         audio.play().catch(function(e) {{ console.log(e); }});
+    #                     }}
+    #                 </script>
+    #             </body>
+    #         </html>
+    #     """
+
+    #     st.components.v1.html(autoplay_html, height=0, width=0)
+
+        # Mark as played so subsequent reruns ignore it
+        # st.session_state.audio_played = True
     if st.session_state.teacher_audio and not st.session_state.get("audio_played", False):
         audio_b64 = base64.b64encode(st.session_state.teacher_audio).decode()
         unique_id = uuid.uuid4().hex
-
+    
         autoplay_html = f"""
             <html>
-                <body>
-                    <audio id="aud_{unique_id}" autoplay>
+                <body style="margin:0; padding:0;">
+                    <audio id="aud_{unique_id}" controls autoplay style="width:100%;">
                         <source src="data:audio/wav;base64,{audio_b64}" type="audio/wav">
                     </audio>
                     <script>
                         var audio = document.getElementById("aud_{unique_id}");
                         if (audio) {{
-                            audio.play().catch(function(e) {{ console.log(e); }});
+                            audio.play().catch(function(e) {{
+                                console.log("Autoplay prevented on mobile device:", e);
+                            }});
                         }}
                     </script>
                 </body>
             </html>
         """
 
-        st.components.v1.html(autoplay_html, height=0, width=0)
-
-        # Mark as played so subsequent reruns ignore it
-        st.session_state.audio_played = True
+    # Render as a small visible player block (e.g., height 50px)
+    st.components.v1.html(autoplay_html, height=50)
+    st.session_state.audio_played = True
 
     st.divider()
 
