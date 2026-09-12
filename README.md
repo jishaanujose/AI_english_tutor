@@ -1,5 +1,3 @@
-Here is a clean, professional `README.md` text tailored specifically for your GitHub repository.
-
 ---
 
 # 🎓 AI English Speaking Tutor
