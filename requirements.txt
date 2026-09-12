@@ -4,6 +4,7 @@ streamlit>=1.39.0
 groq>=0.13.0
 python-dotenv>=1.0.1
 audio-recorder-streamlit
+soundfile
 torch>=2.9.0+cpu
 torchaudio>=2.9.0+cpu
 kokoro==0.9.4
