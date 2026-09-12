@@ -1,8 +1,11 @@
-streamlit
-groq
-python-dotenv
-torch==2.5.1
-torchaudio==2.5.1
-kokoro
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+streamlit>=1.39.0
+groq>=0.13.0
+python-dotenv>=1.0.1
+audio-recorder-streamlit
+torch==2.5.1+cpu
+torchaudio==2.5.1+cpu
+kokoro==0.9.4
 
 
