@@ -1,0 +1,8 @@
+streamlit>=1.39.0
+groq>=0.13.0
+python-dotenv>=1.0.1
+torch==2.5.1
+torchaudio==2.5.1+cpu
+kokoro==0.9.4
+
+
