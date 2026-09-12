@@ -401,9 +401,9 @@ if st.session_state.call_active:
             </html>
         """
 
-    # Render as a small visible player block (e.g., height 50px)
-    st.components.v1.html(autoplay_html, height=50)
-    st.session_state.audio_played = True
+        # Render as a small visible player block (e.g., height 50px)
+        st.components.v1.html(autoplay_html, height=50)
+        st.session_state.audio_played = True
 
     st.divider()
 
